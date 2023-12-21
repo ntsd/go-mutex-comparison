@@ -18,22 +18,24 @@ type Scenario struct {
 	scenarioName ScenarioName
 }
 
-var RandomNumbers [MaxIterations]int
-var TestMethods = map[ScenarioName]func(concurrents, iterations int, method func(key int)){
-	ScenarioWrite: func(concurrents, iterations int, method func(key int)) {
+var StringNumbers [MaxIterations]string
+var RandomNumbers [MaxIterations]string
+
+var TestMethods = map[ScenarioName]func(concurrents, iterations int, method func(key string)){
+	ScenarioWrite: func(concurrents, iterations int, method func(key string)) {
 		wg := new(sync.WaitGroup)
 		wg.Add(concurrents)
 		for t := 0; t < concurrents; t++ {
 			go func() {
 				for i := 0; i < iterations; i++ {
-					method(i)
+					method(StringNumbers[i])
 				}
 				wg.Done()
 			}()
 		}
 		wg.Wait()
 	},
-	ScenarioRandomRead: func(concurrents, iterations int, method func(key int)) {
+	ScenarioRandomRead: func(concurrents, iterations int, method func(key string)) {
 		wg := new(sync.WaitGroup)
 		wg.Add(concurrents)
 		for t := 0; t < concurrents; t++ {
@@ -46,13 +48,13 @@ var TestMethods = map[ScenarioName]func(concurrents, iterations int, method func
 		}
 		wg.Wait()
 	},
-	ScenarioRangeRead: func(concurrents, iterations int, method func(key int)) {
+	ScenarioRangeRead: func(concurrents, iterations int, method func(key string)) {
 		wg := new(sync.WaitGroup)
 		wg.Add(concurrents)
 		for t := 0; t < concurrents; t++ {
 			go func() {
 				for i := 0; i < iterations; i++ {
-					method(0)
+					method("0")
 				}
 				wg.Done()
 			}()

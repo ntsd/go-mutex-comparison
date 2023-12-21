@@ -3,6 +3,7 @@ package benchmark
 import (
 	"fmt"
 	"math/rand"
+	"strconv"
 	"time"
 )
 
@@ -15,9 +16,13 @@ func measure(name string, f func()) {
 }
 
 func Benchmark() {
-	// pre add random number
+	// prepare string numbers
 	for i := 0; i < MaxIterations; i++ {
-		RandomNumbers[i] = rand.Intn(MaxIterations)
+		StringNumbers[i] = strconv.Itoa(i)
+	}
+	// prepare random numbers
+	for i := 0; i < MaxIterations; i++ {
+		RandomNumbers[i] = strconv.Itoa(rand.Intn(MaxIterations))
 	}
 
 	for _, scenario := range TestScenarios {
