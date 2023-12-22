@@ -79,6 +79,21 @@ var TestScenarios = []Scenario{
 		scenarioName: ScenarioRangeRead,
 	},
 	{
+		concurrents:  50,
+		iterations:   20000,
+		scenarioName: ScenarioWrite,
+	},
+	{
+		concurrents:  50,
+		iterations:   20000,
+		scenarioName: ScenarioRandomRead,
+	},
+	{
+		concurrents:  50,
+		iterations:   20, // Range read will read all per interation
+		scenarioName: ScenarioRangeRead,
+	},
+	{
 		concurrents:  100,
 		iterations:   MaxIterations,
 		scenarioName: ScenarioWrite,

@@ -153,6 +153,33 @@ Check all the test scenarios here [benchmark/scenarios.go](benchmark/scenarios.g
 | sync.Map               | range_read (10 concurrents) (100 iters) | 949.263514ms |
 | orcaman/concurrent-map | range_read (10 concurrents) (100 iters) | 2.366558255s |
 
+### 50 concurrents 20k write
+
+| Method                 | Test                                 | Time         |
+| ---------------------- | ------------------------------------ | ------------ |
+| sync.Map               | write (50 concurrents) (20000 iters) | 22.123396ms  |
+| orcaman/concurrent-map | write (50 concurrents) (20000 iters) | 30.682173ms  |
+| Mutex                  | write (50 concurrents) (20000 iters) | 122.591997ms |
+| RWMutex                | write (50 concurrents) (20000 iters) | 134.832297ms |
+
+### 50 concurrents 20k random read
+
+| Method                 | Test                                       | Time         |
+| ---------------------- | ------------------------------------------ | ------------ |
+| sync.Map               | random_read (50 concurrents) (20000 iters) | 7.055942ms   |
+| orcaman/concurrent-map | random_read (50 concurrents) (20000 iters) | 12.597161ms  |
+| RWMutex                | random_read (50 concurrents) (20000 iters) | 32.372341ms  |
+| Mutex                  | random_read (50 concurrents) (20000 iters) | 118.862146ms |
+
+### 50 concurrents 20 range read all
+
+| Method                 | Test                                   | Time         |
+| ---------------------- | -------------------------------------- | ------------ |
+| RWMutex                | range_read (50 concurrents) (20 iters) | 104.010416ms |
+| sync.Map               | range_read (50 concurrents) (20 iters) | 577.479455ms |
+| Mutex                  | range_read (50 concurrents) (20 iters) | 863.322488ms |
+| orcaman/concurrent-map | range_read (50 concurrents) (20 iters) | 1.715899163s |
+
 ### 100 concurrents 10k write
 
 | Method                 | Test                                   | Time         |
