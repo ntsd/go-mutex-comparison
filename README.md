@@ -23,7 +23,7 @@ if !ok {
 v = v
 ```
 
-Rang Read All
+Range Read All
 
 ```go
 syncMap.Range(func(k, v interface{}) bool {
@@ -54,7 +54,7 @@ v = v
 mutex.Unlock()
 ```
 
-Rang Read All
+Range Read All
 
 ```go
 mutex.Lock()
@@ -86,7 +86,7 @@ v = v
 rwMutex.RUnlock()
 ```
 
-Rang Read All
+Range Read All
 
 ```go
 rwMutex.RLock()
@@ -114,7 +114,7 @@ if !ok {
 v = v
 ```
 
-Rang Read All
+Range Read All
 
 ```go
 for i := range cMap.IterBuffered() {
